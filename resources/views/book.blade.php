@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title','Film')
+@section('title','book')
 
 <style>
 
@@ -36,7 +36,7 @@ main {
   height: 100%;
 }
 main .movie {
-  background: url({{$film->poster}}) no-repeat 70% 30%;
+  background: url({{$book->poster}}) no-repeat 70% 30%;
   background-size: cover;
   height: 53vh;
   width: 400px;
@@ -172,19 +172,19 @@ main .description .cast .user p {
     </div>
     <div class="description">
 
-      <h1>{{$film->naslov}}</h1>
+      <h1>{{$book->naslov}}</h1>
       <ul class="genre">
-        <li style="width: 300px;">Movie by {{$film->reziser}}</li>
+        <li style="width: 300px;">Book By: {{$book->pisac}}</li>
       </ul>
 
       <p class="about">
-      {{$film->opis}}
+      {{$book->opis}}
       </p>
 
       <ul class="additionalinfo">
-        <li class="runtime"><p class="highlight">{{$film->trajanje}}</p><p class="label">Total Time</p> </li>
+        <li class="runtime"><p class="highlight">{{$book->brStrana}}</p><p class="label">Total Pages</p> </li>
         <li class="rating">
-          <p class="highlight">{{$film->rejting}}</p><p class="label">Rating</p> </li>
+          <p class="highlight">{{$book->rejting}}</p><p class="label">Rating</p> </li>
       </ul>
 
 

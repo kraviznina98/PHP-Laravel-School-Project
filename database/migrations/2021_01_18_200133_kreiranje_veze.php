@@ -13,7 +13,7 @@ class KreiranjeVeze extends Migration
      */
     public function up()
     {
-        Schema::table('film', function (Blueprint $table) {
+        Schema::table('book', function (Blueprint $table) {
             $table->foreignId('zanr_id')->constrained('zanr');
         });
     }

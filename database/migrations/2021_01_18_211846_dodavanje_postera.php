@@ -13,7 +13,7 @@ class DodavanjePostera extends Migration
      */
     public function up()
     {
-        Schema::table('films', function (Blueprint $table) {
+        Schema::table('books', function (Blueprint $table) {
             $table->string('poster');
         });
     }

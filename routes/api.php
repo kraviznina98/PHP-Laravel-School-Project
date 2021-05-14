@@ -19,9 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('zanrs', 'App\Http\Controllers\ZanrController@getAll');
 Route::get('zanrs/{id}', 'App\Http\Controllers\ZanrController@getById');
-Route::get('films', 'App\Http\Controllers\FilmController@getAll');
-Route::get('films/{id}', 'App\Http\Controllers\FilmController@getById');
+Route::get('books', 'App\Http\Controllers\BookController@getAll');
+Route::get('books/{id}', 'App\Http\Controllers\BookController@getById');
 Route::post('zanrs', 'App\Http\Controllers\ZanrController@save');
-Route::post('films', 'App\Http\Controllers\FilmController@save');
+Route::post('books', 'App\Http\Controllers\BookController@save');
 Route::delete('zanrs/{id}', 'App\Http\Controllers\ZanrController@delete');
-Route::delete('films/{id}', 'App\Http\Controllers\FilmController@delete');
+Route::delete('books/{id}', 'App\Http\Controllers\BookController@delete');

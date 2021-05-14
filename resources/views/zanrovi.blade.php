@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title','Filmovi')
+@section('title','Knjige')
 
 <style>
     html {
@@ -142,7 +142,7 @@
 
     <section class="top-movies" style="height: 100vh;">
         <div class="section-content">
-            <h1 style="display: inline-block;" class='top-movies__title'>Top Movies</h1>
+            <h1 style="display: inline-block;" class='top-movies__title'>Best Books</h1>
             <button id="addNewGenre" style="display: inline-block; margin-right: 20px; margin-left: 20px; background-color: #5cb85c; color: #fff; border: none; padding: 4px 7px;"><i class="fa fa-plus"></i></button>
             @foreach($zanrovi as $zanr)
             <a href="/{{$zanr->id}}" style="background-color: #0275d8; color: #fff; border: none; padding: 4px 7px; display: inline-block; margin: 0px 6px;"><button
@@ -160,14 +160,14 @@
             </select>
 
             @foreach($zanrovi as $zanr)
-            @foreach($zanr->filmovi as $film)
+            @foreach($zanr->knjige as $book)
             <article class="card">
-                <a href="{{$zanr->id}}/{{$film->id}}" class="card__link">
+                <a href="{{$zanr->id}}/{{$book->id}}" class="card__link">
                     <span class="highlight"></span>
-                    <img src="{{$film->poster}}" alt="{{$film->naslov}}" class="card__image" />
+                    <img src="{{$book->poster}}" alt="{{$book->naslov}}" class="card__image" />
                 </a>
-                <h2 class='card__title'>{{$film->naslov}}</h2>
-                <a href="{{$zanr->id}}/{{$film->id}}">Procitaj vise..</a>
+                <h2 class='card__title'>{{$book->naslov}}</h2>
+                <a href="{{$zanr->id}}/{{$book->id}}">Procitaj vise..</a>
             </article>
             @endforeach
     @endforeach

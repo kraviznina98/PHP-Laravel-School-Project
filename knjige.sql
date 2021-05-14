@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `filmovi`
+-- Database: `knjige`
 --
 
 -- --------------------------------------------------------
@@ -40,25 +40,25 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `films`
+-- Table structure for table `books`
 --
 
-CREATE TABLE `films` (
+CREATE TABLE `books` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `naslov` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `opis` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `rejting` decimal(8,2) NOT NULL,
-  `reziser` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pisac` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `zanr_id` bigint(20) UNSIGNED NOT NULL,
-  `trajanje` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `brStrana` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `poster` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `films`
+-- Dumping data for table `books`
 --
 
-INSERT INTO `films` (`id`, `naslov`, `opis`, `rejting`, `reziser`, `zanr_id`, `trajanje`, `poster`) VALUES
+INSERT INTO `books` (`id`, `naslov`, `opis`, `rejting`, `pisac`, `zanr_id`, `brStrana`, `poster`) VALUES
 (1, 'John Wick', 'Prica filma prati Dzona Vika (Keanu Reevs) koji je nekada bio placeni ubica. Zbog ljubavi prema supruzi, ostavlja posao, i odlucuje da potpuno promeni zivot, ali onda jednoga dana...', '8.50', 'Chad Stahelski', 1, '2h', 'https://static1.squarespace.com/static/5ee5ea55da5ceb45cfb7be09/t/5f8d9b7df2518c4f33c62cf0/1603115904218/JOHN+WICK+2.jpg?format=1500w'),
 (2, 'Amazing Spiderman', 'Prica filma prati srednjoskolca Pitera Parkera (Andrew Garfield). U jednoj poseti naucno istrazivackom centru Oscorp, ujeda ga pauk razvijan u laboratorijskim uslovima...', '8.20', 'Marc Weeb', 11, '2h20min', 'https://miro.medium.com/max/4050/1*gjIsgVxqtJgTrvpHvUMp_w.jpeg'),
 (3, 'Why Him', 'U filmu se radi o ljubavnom paru. Medjutim devojcini roditelji su izricito protiv njenog izlazenja sa tom konkretnomn osobom.', '8.00', 'John Hamburg', 4, '1:45', 'https://1.bp.blogspot.com/-2XFyZAR-XZs/WHQjSGvzGSI/AAAAAAAAM9k/zN4RterKHyAkv2d-vbdWAEA2AoYZ4GcJwCLcB/s1600/Why%2BHim%2Bmovie%2Bposter.jpg'),
@@ -156,11 +156,11 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indexes for table `films`
+-- Indexes for table `books`
 --
-ALTER TABLE `films`
+ALTER TABLE `books`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `film_zanr_id_foreign` (`zanr_id`);
+  ADD KEY `book_zanr_id_foreign` (`zanr_id`);
 
 --
 -- Indexes for table `migrations`
@@ -198,9 +198,9 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `films`
+-- AUTO_INCREMENT for table `books`
 --
-ALTER TABLE `films`
+ALTER TABLE `books`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
@@ -226,10 +226,10 @@ ALTER TABLE `zanrs`
 --
 
 --
--- Constraints for table `films`
+-- Constraints for table `books`
 --
-ALTER TABLE `films`
-  ADD CONSTRAINT `film_zanr_id_foreign` FOREIGN KEY (`zanr_id`) REFERENCES `zanrs` (`id`);
+ALTER TABLE `books`
+  ADD CONSTRAINT `book_zanr_id_foreign` FOREIGN KEY (`zanr_id`) REFERENCES `zanrs` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

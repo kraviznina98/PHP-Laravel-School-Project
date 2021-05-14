@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Film;
+use App\Models\Book;
 use App\Models\Zanr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -11,15 +11,15 @@ class ZanrController extends Controller
 {
     public function all(){
         $zanrovi=Zanr::all();
-        $filmovi= Film::all();
+        $knjige= Book::all();
         foreach ($zanrovi as $zanr){
             $add=[];
-            foreach ($filmovi as $film){
-                if($film->zanr_id==$zanr->id){
-                    $add[count($add)]=$film;
+            foreach ($knjige as $book){
+                if($book->zanr_id==$zanr->id){
+                    $add[count($add)]=$book;
                 }
             }
-            $zanr->filmovi=$add;
+            $zanr->knjige=$add;
         }
         return view('zanrovi', [
             'zanrovi'=>$zanrovi
@@ -28,14 +28,14 @@ class ZanrController extends Controller
     }
     public function view($id){
         $zanr= Zanr::findOrFail($id);
-        $filmovi= Film::all();
+        $knjige= Book::all();
         $add=[];
-        foreach ($filmovi as $film) {
-            if ($film->zanr_id == $zanr->id) {
-                $add[count($add)] = $film;
+        foreach ($knjige as $book) {
+            if ($book->zanr_id == $zanr->id) {
+                $add[count($add)] = $book;
             }
         }
-            $zanr->filmovi=$add;
+            $zanr->knjige=$add;
             return view('zanr',['zanr'=>$zanr]);
 
     }
@@ -59,13 +59,13 @@ class ZanrController extends Controller
     }
     public function delete(Request $request, $id){
         $zanr=Zanr::find($id);
-        $svi=Film::all();
+        $svi=Book::all();
         if(is_null($zanr)){
             return response()->json(["message"=>"Zanr nije pronadjen!"],404);
         }
-        foreach ($svi as $film) {
-            if ($film->zanr_id == $zanr->id){
-                $film->delete();
+        foreach ($svi as $book) {
+            if ($book->zanr_id == $zanr->id){
+                $book->delete();
             }
         }
         $zanr->delete();
@@ -73,32 +73,32 @@ class ZanrController extends Controller
     }
     public function getAll(){
         $zanrovi=Zanr::all();
-        $svi=Film::all();
+        $svi=Book::all();
         foreach ($zanrovi as $zanr) {
-            $filmovi=[];
-            foreach ($svi as $film) {
-                if ($film->zanr_id == $zanr->id){
-                    $filmovi[count($filmovi)]=$film;
+            $knjige=[];
+            foreach ($svi as $book) {
+                if ($book->zanr_id == $zanr->id){
+                    $knjige[count($knjige)]=$book;
                 }
             }
-            $zanr->filmovi=$filmovi;
+            $zanr->knjige=$knjige;
         }
 
         return response()->json($zanrovi,200);
     }
     public function getById($id){
         $zanr=Zanr::find($id);
-        $svi=Film::all();
+        $svi=Book::all();
         if(is_null($zanr)){
-            return response()->json(["message"=>"Film nije pronadjen!"],404);
+            return response()->json(["message"=>"Knjiga nije pronadjena!"],404);
         }
-        $filmovi=[];
-        foreach ($svi as $film) {
-            if ($film->zanr_id == $zanr->id){
-                $filmovi[count($filmovi)]=$film;
+        $knjige=[];
+        foreach ($svi as $book) {
+            if ($book->zanr_id == $zanr->id){
+                $knjige[count($knjige)]=$book;
             }
         }
-        $zanr->filmovi=$filmovi;
+        $zanr->knjige=$knjige;
         return response()->json($zanr,200);
     }
 }

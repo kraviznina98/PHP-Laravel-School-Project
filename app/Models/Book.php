@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Film extends Model
+class Book extends Model
 {
     use HasFactory;    public $timestamps = false;
 
-    protected $fillable = ['naslov', 'opis', 'trajanje', 'rejting','reziser','poster', 'zanr_id'];
+    protected $fillable = ['naslov', 'opis', 'brStrana', 'rejting','pisac','poster', 'zanr_id'];
 
 }

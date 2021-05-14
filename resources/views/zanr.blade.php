@@ -145,12 +145,12 @@
             <h1 style="display: inline-block;" class='top-movies__title'>{{$zanr->naziv}}</h1>
             <button id="addNewMovie" style="display: inline-block; margin-right: 20px; margin-left: 20px; background-color: #5cb85c; color: #fff; border: none; padding: 4px 7px;"><i class="fa fa-plus"></i></button>
 
-            <form style="display: none;" id="newMovieForm" action="/add-film" method="post">
+            <form style="display: none;" id="newMovieForm" action="/add-book" method="post">
             {{ csrf_field() }}
             <input type="text" name="naslov" placeholder="naslov">
             <input type="text" name="opis" placeholder="opis">
-            <input type="text" name="trajanje" placeholder="trajanje">
-            <input type="text" name="reziser" placeholder="reziser">
+            <input type="text" name="brStrana" placeholder="brStrana">
+            <input type="text" name="pisac" placeholder="pisac">
             <input type="text" name="poster" placeholder="poster(url)">
             <input type="number" name="rejting" placeholder="rejting">
             <input style="display:none;" type="text" name="zanr_id" value="{{$zanr->id}}">
@@ -166,14 +166,14 @@
             </select>
 
 
-            @foreach($zanr->filmovi as $film)
+            @foreach($zanr->knjige as $book)
             <article class="card">
-                <a href="{{$zanr->id}}/{{$film->id}}" class="card__link">
+                <a href="{{$zanr->id}}/{{$book->id}}" class="card__link">
                     <span class="highlight"></span>
-                    <img src="{{$film->poster}}" alt="{{$film->naslov}}" class="card__image" />
+                    <img src="{{$book->poster}}" alt="{{$book->naslov}}" class="card__image" />
                 </a>
-                <h2 class='card__title'>{{$film->naslov}}</h2>
-                <a href="{{$zanr->id}}/{{$film->id}}">Procitaj vise..</a>
+                <h2 class='card__title'>{{$book->naslov}}</h2>
+                <a href="{{$zanr->id}}/{{$book->id}}">Procitaj vise..</a>
             </article>
             @endforeach
 

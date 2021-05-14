@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class IzmenaFilma extends Migration
+class KreiranjeKnjige extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class IzmenaFilma extends Migration
      */
     public function up()
     {
-        Schema::table('film', function (Blueprint $table) {
-            $table->string('trajanje');
+        Schema::create('book', function (Blueprint $table) {
+            $table->id();
+            $table->string('naslov');
+            $table->string('opis');
+            $table->decimal('rejting');
+            $table->string('pisac');
         });
     }
 

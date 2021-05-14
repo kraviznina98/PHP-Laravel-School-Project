@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\ZanrController@all');
 Route::get('/{zanr}', 'App\Http\Controllers\ZanrController@view');
-Route::get('/{zanr}/{id}', 'App\Http\Controllers\FilmController@view');
-Route::post('/add-film', 'App\Http\Controllers\FilmController@create');
+Route::get('/{zanr}/{id}', 'App\Http\Controllers\BookController@view');
+Route::post('/add-book', 'App\Http\Controllers\BookController@create');
 Route::post('/add-zanr', 'App\Http\Controllers\ZanrController@create');
