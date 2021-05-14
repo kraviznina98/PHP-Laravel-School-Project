@@ -11,8 +11,8 @@
   /*section*/
   .top-movies {
     font-size: 0;
-    background: #bfd5e0;
-    background: radial-gradient(400px at 50%, #d9dbd8 0%, #bfd5e0 100%);
+    background: #f799a6;
+    background: radial-gradient(400px at 50%, #d9dbd8 0%, #f799a6 100%);
     padding: 45px 0;
     box-shadow: inset 0 -5px 8px 0 rgba(0, 0, 0, 0.05);
     font-family: system, -apple-system, ".SFNSDisplay-Regular", HelveticaNeue, LucidaGrande;
@@ -142,7 +142,7 @@
 
     <section class="top-movies" style="height: 100vh;">
         <div class="section-content">
-            <h1 style="display: inline-block;" class='top-movies__title'>Best Books</h1>
+            <h1 style="display: inline-block;" class='top-movies__title'>Kategorije</h1>
             <button id="addNewGenre" style="display: inline-block; margin-right: 20px; margin-left: 20px; background-color: #5cb85c; color: #fff; border: none; padding: 4px 7px;"><i class="fa fa-plus"></i></button>
             @foreach($zanrovi as $zanr)
             <a href="/{{$zanr->id}}" style="background-color: #0275d8; color: #fff; border: none; padding: 4px 7px; display: inline-block; margin: 0px 6px;"><button
