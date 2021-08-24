@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2021 at 10:50 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- Generation Time: Aug 13, 2021 at 02:30 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,40 @@ SET time_zone = "+00:00";
 --
 -- Database: `knjige`
 --
+CREATE DATABASE IF NOT EXISTS `knjige` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `knjige`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `books`
+--
+
+CREATE TABLE `books` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `naslov` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `opis` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pisac` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `zanr_id` bigint(20) UNSIGNED NOT NULL,
+  `brStrana` int(255) NOT NULL,
+  `poster` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rejting` double(10,0) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`id`, `naslov`, `opis`, `pisac`, `zanr_id`, `brStrana`, `poster`, `rejting`) VALUES
+(1, 'Jedan Hitac', '„Sjajno, neukrotivo… nestvarno, čisto zlato. Ova knjiga vas prosto naelektriše… A čitav serijal od vas napravi zavisnika.“ New York Times', 'Chad Stahelski', 11, 473, 'https://www.laguna.rs/_img/korice/2071/jedan_hitac-li_cajld_v.jpg', 8),
+(2, 'Potraga za lasicom\r\n', 'Majstor trilera vam predstavlja novu adrenalinsku priču o Aleksu Krosu.', 'Džejms Paterson', 11, 405, 'https://www.laguna.rs/_img/korice/1362/potraga_za_lasicom-dzejms_paterson_v.jpg', 8),
+(3, 'Čovek po imenu Uve', 'Bestseler New York Timesa koji je naprečac osvojio svet!', 'Fredrik Bakman', 4, 360, 'https://www.laguna.rs/_img/korice/3366/covek_po_imenu_uve_v.jpg', 9),
+(4, 'Pantaleon i posetiteljke', '„Služi Armiji, služi\r\nTo ti je većma čast\r\nSluži Armiji, služi\r\nVojnicima u slast“', 'Mario Vargas Ljosa', 4, 286, 'https://www.laguna.rs/_img/korice/1608/pantaleon_i_posetiteljke-mario_vargas_ljosa_v.jpg', 7),
+(5, 'Alijenista', '„Užasavajući i očaravajući roman... Obožavaće ga ljubitelji filmova Sedam i Kad jaganjci utihnu.“ Flint Journal', 'Kejleb Kar', 2, 2, 'https://www.laguna.rs/_img/korice/69/alijenista-kejleb_kar_v.jpg', 9),
+(10, 'Deca noći', '„Njegov najbolji roman do sada... Priča koja ugrize i ne pušta.“ Kirkus Reviews', 'Den Simons', 2, 498, 'https://www.laguna.rs/_img/korice/3002/deca_noci-den_simons_v.jpg', 10),
+(11, 'Kraljevstvo', '\"Nesbe je epskim zamasima razorio iluziju o jednoj porodici i srećnoj maloj planinskoj zajednici.“ Kirkus Reviews', 'Ju Nesbe', 1, 520, 'https://www.laguna.rs/_img/korice/4858/kraljevstvo-ju_nesbe_v.jpg', 10),
+(12, 'Drugi San', '„Jednom rečju: sjajno. U dve reči: neodoljivo štivo. U tri reči: kupite je sutra. U četiri: a još bolje danas.“ Stiven King', 'Robert Heris', 1, 304, 'https://www.laguna.rs/_img/korice/4944/drugi_san-robert_heris_v.jpg', 10),
+(13, 'Majka Ubice', 'Sin me je pitao: Da li bi me volela da nekog ubijem? I to je bilo pre nego što smo znali. Jer moj sin je bio samo dečak kad je pitao: Da li bi me volela da nekog ubijem? A ja sam odgovorila: Da.', 'Ida Linde', 3, 168, 'https://www.laguna.rs/_img/korice/4866/majka_ubice-ida_linde_v.jpg', 7);
 
 -- --------------------------------------------------------
 
@@ -36,34 +70,6 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `books`
---
-
-CREATE TABLE `books` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `naslov` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `opis` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `rejting` decimal(8,2) NOT NULL,
-  `pisac` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `zanr_id` bigint(20) UNSIGNED NOT NULL,
-  `brStrana` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `poster` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `books`
---
-
-INSERT INTO `books` (`id`, `naslov`, `opis`, `rejting`, `pisac`, `zanr_id`, `brStrana`, `poster`) VALUES
-(1, 'John Wick', 'Prica filma prati Dzona Vika (Keanu Reevs) koji je nekada bio placeni ubica. Zbog ljubavi prema supruzi, ostavlja posao, i odlucuje da potpuno promeni zivot, ali onda jednoga dana...', '8.50', 'Chad Stahelski', 1, '2h', 'https://static1.squarespace.com/static/5ee5ea55da5ceb45cfb7be09/t/5f8d9b7df2518c4f33c62cf0/1603115904218/JOHN+WICK+2.jpg?format=1500w'),
-(2, 'Amazing Spiderman', 'Prica filma prati srednjoskolca Pitera Parkera (Andrew Garfield). U jednoj poseti naucno istrazivackom centru Oscorp, ujeda ga pauk razvijan u laboratorijskim uslovima...', '8.20', 'Marc Weeb', 11, '2h20min', 'https://miro.medium.com/max/4050/1*gjIsgVxqtJgTrvpHvUMp_w.jpeg'),
-(3, 'Why Him', 'U filmu se radi o ljubavnom paru. Medjutim devojcini roditelji su izricito protiv njenog izlazenja sa tom konkretnomn osobom.', '8.00', 'John Hamburg', 4, '1:45', 'https://1.bp.blogspot.com/-2XFyZAR-XZs/WHQjSGvzGSI/AAAAAAAAM9k/zN4RterKHyAkv2d-vbdWAEA2AoYZ4GcJwCLcB/s1600/Why%2BHim%2Bmovie%2Bposter.jpg'),
-(4, 'Catch Me If you Can', 'Glavnog lika igra Leonardo Di Caprio. U filmu se bavi prevarama i falsifikovanjem diploma i dokumenata, sve dok ga jednom ne uhvate...', '8.30', 'Steven Spilberg', 3, '3:30', 'https://images-na.ssl-images-amazon.com/images/I/81V%2Bb69u3xL._SL1500_.jpg'),
-(5, 'Parasite', 'Prica filma prati jednu korejsku porodicu, koja se postepeno useljava u kucu bogatasa. To im prolazi, sve dok jednog dana...', '8.00', 'Bong Joon-ho', 4, '2h', 'https://images-na.ssl-images-amazon.com/images/I/81iQLZujrlL._SL1500_.jpg');
 
 -- --------------------------------------------------------
 
@@ -149,18 +155,18 @@ INSERT INTO `zanrs` (`id`, `naziv`) VALUES
 --
 
 --
--- Indexes for table `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
-
---
 -- Indexes for table `books`
 --
 ALTER TABLE `books`
   ADD PRIMARY KEY (`id`),
   ADD KEY `book_zanr_id_foreign` (`zanr_id`);
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
 -- Indexes for table `migrations`
@@ -192,16 +198,16 @@ ALTER TABLE `zanrs`
 --
 
 --
+-- AUTO_INCREMENT for table `books`
+--
+ALTER TABLE `books`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `books`
---
-ALTER TABLE `books`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -219,7 +225,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `zanrs`
 --
 ALTER TABLE `zanrs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
